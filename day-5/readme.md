@@ -72,7 +72,9 @@ helm install elasticsearch \
 ```
 **In case of Azure:**
 -------------------
+```bash
 helm install elasticsearch --set replicas=1,volumeClaimTemplate.storageClassName=managed,persistence.labels.enabled=true elastic/elasticsearch -n logging --atomic
+```
 -------------------
 - Installs Elasticsearch in the `logging` namespace.
 - It sets the number of replicas, specifies the storage class, and enables persistence labels to ensure
