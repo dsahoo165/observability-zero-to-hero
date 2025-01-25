@@ -412,7 +412,7 @@ config:
     [INPUT]
         Name systemd
         Tag host.*
-        Systemd_Filter _SYSTEMD_UNIT=kubelet.service
+        # Systemd_Filter _SYSTEMD_UNIT=kubelet.service # Commenting out this line will read logs from all systemd units
         Read_From_Tail On
 
   ## https://docs.fluentbit.io/manual/pipeline/filters
