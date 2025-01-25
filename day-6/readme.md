@@ -42,6 +42,7 @@
 ```bash
 kubectl get secret elasticsearch-master-certs -n logging -o jsonpath='{.data.ca\.crt}' | base64 --decode > ca-cert.pem
 ```
+**Note**: while installing jaeger, for the certificate file remove ' from starting and ' at ending if it is present.
 
 ### Step 4: Create Tracing Namespace
 - Creates a new Kubernetes namespace called tracing if it doesn't already exist, where Jaeger components will be installed.
