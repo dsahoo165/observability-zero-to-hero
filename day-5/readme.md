@@ -70,6 +70,10 @@ helm install elasticsearch \
  --set volumeClaimTemplate.storageClassName=gp2 \
  --set persistence.labels.enabled=true elastic/elasticsearch -n logging
 ```
+**In case of Azure:**
+-------------------
+helm install elasticsearch --set replicas=1,volumeClaimTemplate.storageClassName=managed,persistence.labels.enabled=true elastic/elasticsearch -n logging --atomic
+-------------------
 - Installs Elasticsearch in the `logging` namespace.
 - It sets the number of replicas, specifies the storage class, and enables persistence labels to ensure
 data is stored on persistent volumes.
@@ -89,6 +93,9 @@ kubectl get secrets --namespace=logging elasticsearch-master-credentials -ojsonp
 ```bash
 helm install kibana --set service.type=LoadBalancer elastic/kibana -n logging
 ```
+Note: If ingress is already there then make the service type as clusterip
+helm install kibana --set service.type=**ClusterIP** elastic/kibana -n logging
+
 - Kibana provides a user-friendly interface for exploring and visualizing data stored in Elasticsearch.
 - It is exposed as a LoadBalancer service, making it accessible from outside the cluster.
 
